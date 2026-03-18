@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +22,13 @@ class MainActivity : AppCompatActivity() {
         val zuluSwitch = findViewById<Switch>(R.id.zuluSwitch)
         val displayTxt = findViewById<TextView>(R.id.displayTxt)
         val clickMeBtn = findViewById<Button>(R.id.clickMeBtn)
+
+        //creating a toast to display when the user clicks the button
+        clickMeBtn?.setOnClickListener {
+            Toast.makeText(this@MainActivity, "Button clicked!",
+                Toast.LENGTH_LONG).show()
+            displayTxt.text = "Welcome ${nameTxt.text}"
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
