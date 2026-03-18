@@ -23,11 +23,28 @@ class MainActivity : AppCompatActivity() {
         val displayTxt = findViewById<TextView>(R.id.displayTxt)
         val clickMeBtn = findViewById<Button>(R.id.clickMeBtn)
 
-        //creating a toast to display when the user clicks the button
+        //code for when the button is clicked
         clickMeBtn?.setOnClickListener {
+            //local variables only for the scope of THIS function
+            var greeting: String
+            var zulu: Boolean = zuluSwitch.isChecked
+
+            //creating a toast to display when the user clicks the button
             Toast.makeText(this@MainActivity, "Button clicked!",
                 Toast.LENGTH_LONG).show()
-            displayTxt.text = "Welcome ${nameTxt.text}"
+
+            if (zulu){
+                greeting = "Sawubona, ${nameTxt}"
+            }
+            else {
+                if (nameTxt.text.toString() == "Sam" || nameTxt.text.toString() == "Samantha"){
+                    greeting = "Yo ${nameTxt.text}"
+                } else {
+                    //displaying the welcome message to the user
+                    greeting = "Greetings ${nameTxt.text}"
+                }
+            }
+            displayTxt.text = greeting
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
