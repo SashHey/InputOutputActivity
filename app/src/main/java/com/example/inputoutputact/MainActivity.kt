@@ -1,8 +1,10 @@
 package com.example.inputoutputact
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
@@ -32,8 +34,10 @@ class MainActivity : AppCompatActivity() {
         val zuluSwitch = findViewById<Switch>(R.id.zuluSwitch)
         val displayTxt = findViewById<TextView>(R.id.displayTxt)
         val clickMeBtn = findViewById<Button>(R.id.clickMeBtn)
+        val langSpin = findViewById<Spinner>(R.id.languageSpin)
 
-        //create enum here
+        langSpin.adapter = ArrayAdapter<MainActivity.Languages>(this,
+            android.R.layout.simple_list_item_1, Languages.values())
 
         //code for when the button is clicked
         clickMeBtn?.setOnClickListener {
@@ -41,11 +45,19 @@ class MainActivity : AppCompatActivity() {
             var greeting: String
             var zulu: Boolean = zuluSwitch.isChecked
             var age: Int = 20
-//
-//            //creating a toast to display when the user clicks the button
-//            Toast.makeText(this@MainActivity, "Button clicked!",
-//                Toast.LENGTH_LONG).show()
-//
+            var language = langSpin.selectedItem as Languages
+
+            //creating a toast to display when the user clicks the button
+            Toast.makeText(this@MainActivity, "Button clicked!",
+                Toast.LENGTH_LONG).show()
+
+            when (language){
+                Languages.ZULU -> greeting = "Sawubona $nameTxt"
+                else -> greeting = "Greetings $nameTxt"
+            }
+
+            displayTxt.text = greeting
+            
 //            //if Zulu toggle is on
 //            if (zulu){
 //                greeting = "Sawubona, ${nameTxt}"

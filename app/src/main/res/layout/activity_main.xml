@@ -43,4 +43,11 @@
         tools:layout_editor_absoluteX="168dp"
         tools:layout_editor_absoluteY="179dp" />
 
+    <Spinner
+        android:id="@+id/languageSpin"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="120dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
